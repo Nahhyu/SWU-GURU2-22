@@ -1,0 +1,50 @@
+[
+  {
+    "id": "drawing",
+    "name": "드로잉",
+    "category": "ART",
+    "description": "연필과 종이로 일상을 기록하는 취미",
+    "estimatedCost": "1만~5만원",
+    "difficulty": 1,
+    "supplies": ["스케치북", "연필", "지우개"],
+    "preferenceVector": {
+      "environment": 0.2,
+      "social": 0.2,
+      "physicalIntensity": 0.1,
+      "budget": 0.8,
+      "structureCreativity": 0.9
+    }
+  },
+  {
+    "id": "running",
+    "name": "러닝",
+    "category": "SPORTS",
+    "description": "가벼운 장비로 시작하는 야외 유산소 운동",
+    "estimatedCost": "5만~20만원",
+    "difficulty": 2,
+    "supplies": ["러닝화", "운동복"],
+    "preferenceVector": {
+      "environment": 0.9,
+      "social": 0.4,
+      "physicalIntensity": 0.9,
+      "budget": 0.7,
+      "structureCreativity": 0.2
+    }
+  },
+  {
+    "id": "baking",
+    "name": "베이킹",
+    "category": "COOKING",
+    "description": "레시피를 따라 빵과 디저트를 만드는 취미",
+    "estimatedCost": "5만~15만원",
+    "difficulty": 2,
+    "supplies": ["오븐", "볼", "계량도구"],
+    "preferenceVector": {
+      "environment": 0.1,
+      "social": 0.5,
+      "physicalIntensity": 0.2,
+      "budget": 0.4,
+      "structureCreativity": 0.6
+    }
+  }
+]

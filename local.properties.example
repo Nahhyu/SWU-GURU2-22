@@ -1,0 +1,5 @@
+# Copy this line into local.properties and replace the value with your key.
+YOUTUBE_API_KEY=YOUR_YOUTUBE_DATA_API_KEY
+
+# Android emulator reaches a backend on this Mac through 10.0.2.2.
+OPENAI_PROXY_BASE_URL=http://10.0.2.2:8787/

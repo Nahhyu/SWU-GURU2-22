@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "question": "어떤 환경에서 시간을 보내는 것이 더 좋은가요?",
+    "options": [
+      {
+        "id": "indoor",
+        "text": "차분한 실내 공간",
+        "weights": {
+          "environment": 0.1,
+          "social": 0.3,
+          "physicalIntensity": 0.2,
+          "budget": 0.5,
+          "structureCreativity": 0.6
+        }
+      },
+      {
+        "id": "outdoor",
+        "text": "활동적인 야외 공간",
+        "weights": {
+          "environment": 0.9,
+          "social": 0.5,
+          "physicalIntensity": 0.8,
+          "budget": 0.5,
+          "structureCreativity": 0.4
+        }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "취미를 누구와 즐기고 싶나요?",
+    "options": [
+      {
+        "id": "solo",
+        "text": "혼자 집중하고 싶어요",
+        "weights": {
+          "environment": 0.4,
+          "social": 0.1,
+          "physicalIntensity": 0.4,
+          "budget": 0.6,
+          "structureCreativity": 0.7
+        }
+      },
+      {
+        "id": "group",
+        "text": "다른 사람과 함께하고 싶어요",
+        "weights": {
+          "environment": 0.6,
+          "social": 0.9,
+          "physicalIntensity": 0.6,
+          "budget": 0.4,
+          "structureCreativity": 0.5
+        }
+      }
+    ]
+  }
+]

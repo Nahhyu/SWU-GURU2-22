@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.hobbymate.ui.splash.SplashFragment"
+        android:label="@string/splash_title">
+        <action
+            android:id="@+id/action_splashFragment_to_onboardingFragment"
+            app:destination="@id/onboardingFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.example.hobbymate.ui.onboarding.OnboardingFragment"
+        android:label="@string/onboarding_title">
+        <action
+            android:id="@+id/action_onboardingFragment_to_hobbyRecommendFragment"
+            app:destination="@id/hobbyRecommendFragment" />
+        <action
+            android:id="@+id/action_onboardingFragment_to_hobbySelectFragment"
+            app:destination="@id/hobbySelectFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/hobbyRecommendFragment"
+        android:name="com.example.hobbymate.ui.hobby.HobbyRecommendFragment"
+        android:label="@string/hobby_recommend_title">
+        <action
+            android:id="@+id/action_hobbyRecommendFragment_to_hobbyInfoFragment"
+            app:destination="@id/hobbyInfoFragment" />
+        <action
+            android:id="@+id/action_hobbyRecommendFragment_to_hobbySelectFragment"
+            app:destination="@id/hobbySelectFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/hobbySelectFragment"
+        android:name="com.example.hobbymate.ui.hobby.HobbySelectFragment"
+        android:label="@string/hobby_select_title">
+        <action
+            android:id="@+id/action_hobbySelectFragment_to_hobbyInfoFragment"
+            app:destination="@id/hobbyInfoFragment" />
+        <action
+            android:id="@+id/action_hobbySelectFragment_to_hobbyReadyFragment"
+            app:destination="@id/hobbyReadyFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/hobbyInfoFragment"
+        android:name="com.example.hobbymate.ui.hobby.HobbyInfoFragment"
+        android:label="@string/hobby_info_title">
+        <argument
+            android:name="hobbyId"
+            android:defaultValue="climbing"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_hobbyInfoFragment_to_hobbyReadyFragment"
+            app:destination="@id/hobbyReadyFragment" />
+        <action
+            android:id="@+id/action_hobbyInfoFragment_to_guideSetupFragment"
+            app:destination="@id/guideSetupFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/hobbyReadyFragment"
+        android:name="com.example.hobbymate.ui.hobby.HobbyReadyFragment"
+        android:label="@string/hobby_ready_title">
+        <action
+            android:id="@+id/action_hobbyReadyFragment_to_guideSetupFragment"
+            app:destination="@id/guideSetupFragment" />
+        <action
+            android:id="@+id/action_hobbyReadyFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/onboardingFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/guideSetupFragment"
+        android:name="com.example.hobbymate.ui.guide.GuideSetupFragment"
+        android:label="@string/guide_setup_title">
+        <argument
+            android:name="hobbyId"
+            android:defaultValue="climbing"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_guideSetupFragment_to_roadmapFragment"
+            app:destination="@id/roadmapFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/roadmapFragment"
+        android:name="com.example.hobbymate.ui.guide.RoadmapFragment"
+        android:label="@string/roadmap_title">
+        <argument
+            android:name="hobbyId"
+            android:defaultValue="climbing"
+            app:argType="string" />
+        <argument
+            android:name="guideId"
+            android:defaultValue="1L"
+            app:argType="long" />
+        <argument
+            android:name="level"
+            android:defaultValue="first"
+            app:argType="string" />
+        <argument
+            android:name="levelLabel"
+            android:defaultValue="완전 처음"
+            app:argType="string" />
+        <argument
+            android:name="goal"
+            android:defaultValue="3개월 안에 V3 문제 완등하기"
+            app:argType="string" />
+        <argument
+            android:name="durationWeeks"
+            android:defaultValue="12"
+            app:argType="integer" />
+        <argument
+            android:name="minutesPerSession"
+            android:defaultValue="30"
+            app:argType="integer" />
+        <argument
+            android:name="sessionsPerWeek"
+            android:defaultValue="5"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_roadmapFragment_to_sessionListFragment"
+            app:destination="@id/sessionListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/sessionListFragment"
+        android:name="com.example.hobbymate.ui.guide.SessionListFragment"
+        android:label="@string/session_list_title">
+        <argument
+            android:name="weekNumber"
+            android:defaultValue="1"
+            app:argType="integer" />
+        <argument
+            android:name="hobbyId"
+            android:defaultValue="climbing"
+            app:argType="string" />
+        <argument
+            android:name="hobbyGoal"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="sessionsPerWeek"
+            android:defaultValue="5"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_sessionListFragment_to_dailyGuideFragment"
+            app:destination="@id/dailyGuideFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/dailyGuideFragment"
+        android:name="com.example.hobbymate.ui.guide.DailyGuideFragment"
+        android:label="@string/daily_guide_title">
+        <argument
+            android:name="videoId"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="videoTitle"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="videoThumbnailUrl"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="videoDescription"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="videoChannel"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="hobbyId"
+            android:defaultValue="climbing"
+            app:argType="string" />
+        <argument
+            android:name="hobbyGoal"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="weekNumber"
+            android:defaultValue="1"
+            app:argType="integer" />
+        <argument
+            android:name="sessionsPerWeek"
+            android:defaultValue="5"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_dailyGuideFragment_to_dailyReviewFragment"
+            app:destination="@id/dailyReviewFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/dailyReviewFragment"
+        android:name="com.example.hobbymate.ui.review.DailyReviewFragment"
+        android:label="@string/daily_review_title">
+        <argument
+            android:name="sessionId"
+            android:defaultValue="1L"
+            app:argType="long" />
+        <argument
+            android:name="reviewTitle"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="actualMinutes"
+            android:defaultValue="1"
+            app:argType="integer" />
+        <argument
+            android:name="completedSteps"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="totalSteps"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="currentStage"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="hobbyId"
+            android:defaultValue="climbing"
+            app:argType="string" />
+        <argument
+            android:name="weekNumber"
+            android:defaultValue="1"
+            app:argType="integer" />
+        <argument
+            android:name="sessionsPerWeek"
+            android:defaultValue="5"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_dailyReviewFragment_to_weeklyReviewFragment"
+            app:destination="@id/weeklyReviewFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/weeklyReviewFragment"
+        android:name="com.example.hobbymate.ui.review.WeeklyReviewFragment"
+        android:label="@string/weekly_review_title">
+        <argument
+            android:name="hobbyId"
+            android:defaultValue="climbing"
+            app:argType="string" />
+        <argument
+            android:name="weekNumber"
+            android:defaultValue="1"
+            app:argType="integer" />
+        <argument
+            android:name="sessionsPerWeek"
+            android:defaultValue="5"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_weeklyReviewFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/onboardingFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.hobbymate.ui.home.HomeFragment"
+        android:label="@string/home_title">
+        <action
+            android:id="@+id/action_homeFragment_to_onboardingFragment"
+            app:destination="@id/onboardingFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_hobbyInfoFragment"
+            app:destination="@id/hobbyInfoFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_roadmapFragment"
+            app:destination="@id/roadmapFragment" />
+    </fragment>
+</navigation>
