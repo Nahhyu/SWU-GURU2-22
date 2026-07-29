@@ -1,14 +1,24 @@
-import {
-  analyzeVideo,
-  errorResponse,
-} from "../../lib/openai-service.mjs";
+import { analyzeVideo } from "../../lib/openai-service.mjs";
 
-export async function POST(request) {
-  try {
-    return Response.json(await analyzeVideo(await request.json()), {
-      headers: { "Cache-Control": "no-store" },
-    });
-  } catch (error) {
-    return errorResponse(error);
+export default async function handler(request, response) {
+  if (request.method !== "POST") {
+    response.setHeader("Allow", "POST");
+    return response.status(405).json({ message: "Method not allowed" });
   }
+
+  response.setHeader("Cache-Control", "no-store");
+  try {
+    return response.status(200).json(
+      await analyzeVideo(parseBody(request.body)),
+    );
+  } catch (error) {
+    return response.status(error?.statusCode ?? 500).json({
+      message: error?.message ?? "요청을 처리하지 못했습니다.",
+    });
+  }
+}
+
+function parseBody(body) {
+  if (typeof body === "string") return JSON.parse(body);
+  return body ?? {};
 }
