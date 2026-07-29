@@ -1,21 +1,35 @@
 import { createServer } from "node:http";
 
 const port = Number.parseInt(process.env.PORT ?? "8787", 10);
-const host = process.env.HOST ?? "127.0.0.1";
+const host = process.env.HOST ?? "0.0.0.0";
 const apiKey = process.env.OPENAI_API_KEY ?? "";
 const model = process.env.OPENAI_MODEL ?? "gpt-5.4-mini";
 
 createServer(async (request, response) => {
-  if (request.method === "GET" && request.url === "/health") {
+  const pathname = new URL(request.url, "http://localhost").pathname.replace(/\/$/, "") || "/";
+
+  if (request.method === "GET" && pathname === "/") {
+    return sendJson(response, 200, {
+      ok: true,
+      service: "HobbyMate API",
+      health: "/api/health",
+    });
+  }
+  if (
+    request.method === "GET" &&
+    (pathname === "/health" || pathname === "/api/health")
+  ) {
     return sendJson(response, 200, {
       ok: true,
       openAiConfigured: apiKey.length > 0,
     });
   }
   const isVideoAnalysis =
-    request.method === "POST" && request.url === "/v1/analyze-video";
+    request.method === "POST" &&
+    (pathname === "/v1/analyze-video" || pathname === "/api/v1/analyze-video");
   const isGuideGeneration =
-    request.method === "POST" && request.url === "/v1/generate-guide";
+    request.method === "POST" &&
+    (pathname === "/v1/generate-guide" || pathname === "/api/v1/generate-guide");
   if (!isVideoAnalysis && !isGuideGeneration) {
     return sendJson(response, 404, { message: "Not found" });
   }
